@@ -5,7 +5,16 @@ import org.apache.spark.sql.sources.v2.writer.DataWriterFactory;
 import org.apache.spark.sql.sources.v2.writer.WriterCommitMessage;
 import org.apache.spark.sql.sources.v2.writer.streaming.StreamWriter;
 
+import java.util.Map;
+
 public class CassandraStreamWriter implements StreamWriter {
+
+    private final Map<String, String> dataSourceOptions;
+
+    public CassandraStreamWriter(Map<String, String> dataSourceOptions) {
+        this.dataSourceOptions = dataSourceOptions;
+    }
+
     @Override
     public void commit(long l, WriterCommitMessage[] writerCommitMessages) {
 
@@ -19,6 +28,6 @@ public class CassandraStreamWriter implements StreamWriter {
     @Override
     public DataWriterFactory<Row> createWriterFactory() {
 
-        return new  CassandraDataWriterFactory();
+        return new CassandraDataWriterFactory(dataSourceOptions);
     }
 }

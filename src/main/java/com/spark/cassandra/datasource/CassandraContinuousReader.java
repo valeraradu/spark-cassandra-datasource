@@ -22,13 +22,13 @@ public class CassandraContinuousReader implements ContinuousReader {
     }
 
     @Override
-    public void setStartOffset(Optional<Offset> optional) {
-
+    public Offset getStartOffset() {
+        return null;
     }
 
     @Override
-    public Offset getStartOffset() {
-        return null;
+    public void setStartOffset(Optional<Offset> optional) {
+
     }
 
     @Override

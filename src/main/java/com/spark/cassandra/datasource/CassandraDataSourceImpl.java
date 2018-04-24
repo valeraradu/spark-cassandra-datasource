@@ -37,7 +37,7 @@ public class CassandraDataSourceImpl
                                            OutputMode outputMode,
                                            DataSourceOptions dataSourceOptions) {
 
-        return new CassandraStreamWriter();
+        return new CassandraStreamWriter(dataSourceOptions.asMap());
     }
 
     @Override
